@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@5.0.0/bundles/stomp.umd.min.js"></script>
+</head>
+<body>
+
+<script>
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const client = new StompJs.Client({brokerURL: `${protocol}://${window.location.host}/ws`});
+
+    client.onConnect = (frame) => {
+        console.log("Connected");
+    };
+    client.onDisconnect = (frame) => {
+        console.log("Disconnected");
+    };
+    client.activate();
+</script>
+</body>
+</html>
